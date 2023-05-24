@@ -6,6 +6,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,6 +16,7 @@ public class Product {
 	@Id
 	private long eanCode;
 	
+	@OrderBy("id DESC")
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 	private List<Comment> comment;
 	
@@ -68,6 +70,12 @@ public class Product {
 		this.picture = picture;
 	}
 	private String name;
+	public List<Comment> getComment() {
+		return comment;
+	}
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
+	}
 	private String description;
 	private String brand;
 	private float price;

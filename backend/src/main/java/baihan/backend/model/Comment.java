@@ -1,6 +1,11 @@
 package baihan.backend.model;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,10 +23,11 @@ public class Comment {
     private Long id;
 
     private String text;
-    private LocalDate date;
+    private String date;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
+    @JsonIgnore
     private Product product;
 
     // Constructor, getters y setters
@@ -29,7 +35,7 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String text, LocalDate date, Product product) {
+    public Comment(String text, String date, Product product) {
         this.text = text;
         this.date = date;
         this.product = product;
@@ -51,12 +57,15 @@ public class Comment {
         this.text = text;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDate(String date) {
+    	DateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm:ss");
+
+        String dateG = dateFormat.format(new Date());
+        this.date = dateG;
     }
 
     public Product getProduct() {
@@ -66,5 +75,6 @@ public class Comment {
     public void setProduct(Product product) {
         this.product = product;
     }
+
 }
 

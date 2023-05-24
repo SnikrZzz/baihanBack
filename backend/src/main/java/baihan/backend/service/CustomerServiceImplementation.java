@@ -1,6 +1,7 @@
 package baihan.backend.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,21 @@ public class CustomerServiceImplementation implements CustomerService {
 	public Customer saveCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		return customerRepository.save(customer);
+	}
+
+	@Override
+	public Customer loginCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		return customerRepository.loginCustomer(customer.getCorreo(), customer.getPassword());
+	}
+
+	@Override
+	public Customer getSingleCustomer(Long cedula) {
+		Optional<Customer> customer = customerRepository.findById(cedula);
+		if (customer.isPresent()) {
+			return customer.get();
+		}
+		throw new RuntimeException("Product is not found for the id " + cedula);
 	}
 
 }

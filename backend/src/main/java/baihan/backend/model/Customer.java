@@ -13,7 +13,7 @@ public class Customer {
 	private String nombre;
 	private String correo;
 	private String password;
-	private int telefono;
+	private Long telefono;
 	private String direccion;
 	private String descripcion;
 	
@@ -22,7 +22,7 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(Long cedula, String nombre, String correo, String password, int telefono, String direccion,
+	public Customer(Long cedula, String nombre, String correo, String password, Long telefono, String direccion,
 			String descripcion) {
 		super();
 		this.cedula = cedula;
@@ -66,11 +66,11 @@ public class Customer {
 		this.password = password;
 	}
 
-	public int getTelefono() {
+	public Long getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(Long telefono) {
 		this.telefono = telefono;
 	}
 

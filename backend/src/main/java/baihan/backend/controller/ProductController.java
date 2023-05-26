@@ -27,9 +27,14 @@ public class ProductController {
 		return productService.getProducts();
 	}
 	
-	@GetMapping("{id}")
-	public Product getProduct (@PathVariable Long id) {
+	@GetMapping("byId/{id}")
+	public Product getProductById (@PathVariable Long id) {
 		return productService.getSingleProduct(id);
+	}
+	
+	@GetMapping("byString/{name}")
+	public List<Product> getProductByName (@PathVariable String name) {
+		return productService.getProductByName(name.toLowerCase());
 	}
 	
 	@PostMapping("/save")

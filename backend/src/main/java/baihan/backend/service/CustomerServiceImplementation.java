@@ -24,6 +24,7 @@ public class CustomerServiceImplementation implements CustomerService {
 	@Override
 	public Customer saveCustomer(Customer customer) {
 		// TODO Auto-generated method stub
+		System.out.println(customer);
 		return customerRepository.save(customer);
 	}
 

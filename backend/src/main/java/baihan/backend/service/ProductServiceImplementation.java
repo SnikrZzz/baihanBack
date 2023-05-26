@@ -36,4 +36,10 @@ public class ProductServiceImplementation implements ProductService {
 		}
 		throw new RuntimeException("Product is not found for the id " + id);
 	}
+	
+	@Override
+	public List<Product> getProductByName (String name) {
+		return repository.findByString(name);
+		
+	}
 }

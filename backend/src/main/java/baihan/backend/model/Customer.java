@@ -86,6 +86,12 @@ public class Customer {
 		return descripcion;
 	}
 
+	@Override
+	public String toString() {
+		return "Customer [cedula=" + cedula + ", nombre=" + nombre + ", correo=" + correo + ", password=" + password
+				+ ", telefono=" + telefono + ", direccion=" + direccion + ", descripcion=" + descripcion + "]";
+	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}

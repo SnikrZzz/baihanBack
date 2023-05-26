@@ -7,4 +7,5 @@ public interface ProductService {
 	List<Product> getProducts();
 	Product saveProduct(Product product);
 	Product getSingleProduct(Long id);
+	List<Product> getProductByName(String name);
 }

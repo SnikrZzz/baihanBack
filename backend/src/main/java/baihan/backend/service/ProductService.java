@@ -8,4 +8,6 @@ public interface ProductService {
 	Product saveProduct(Product product);
 	Product getSingleProduct(Long id);
 	List<Product> getProductByName(String name);
+	List<Product> getProductByCustomerId(Long cedula);
+	void deleteProductById(Long id);
 }

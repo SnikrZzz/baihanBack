@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import baihan.backend.model.Customer;
+import baihan.backend.model.Product;
 import baihan.backend.repository.CustomerRepository;
 
 @Service
@@ -25,7 +26,13 @@ public class CustomerServiceImplementation implements CustomerService {
 	public Customer saveCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		System.out.println(customer);
-		return customerRepository.save(customer);
+		Optional<Customer> cust = customerRepository.findById(customer.getCedula());
+		if (cust.isPresent()) {
+			throw new RuntimeException("La cédula ya está registrada");
+		} else {
+			return customerRepository.save(customer);	
+		}
+		
 	}
 
 	@Override

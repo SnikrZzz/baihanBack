@@ -5,6 +5,8 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
@@ -73,6 +75,18 @@ public class Product {
 	public List<Comment> getComment() {
 		return comment;
 	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public void setComment(List<Comment> comment) {
 		this.comment = comment;
 	}
@@ -80,4 +94,9 @@ public class Product {
 	private String brand;
 	private float price;
 	private String picture;
+	private int quantity;
+	
+	@ManyToOne
+    @JoinColumn(name = "customer_id")
+	private Customer customer;
 }
